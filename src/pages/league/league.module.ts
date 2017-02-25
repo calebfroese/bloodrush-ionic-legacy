@@ -10,7 +10,7 @@ import {LeagueComponent} from './league.component';
 @NgModule({
   imports: [IonicModule],
   declarations: [LeagueComponent, DetailComponent],
-  entryComponents: [LeagueComponent],
+  entryComponents: [LeagueComponent, DetailComponent],
   exports: [LeagueComponent]
 })
 export class LeagueModule {
