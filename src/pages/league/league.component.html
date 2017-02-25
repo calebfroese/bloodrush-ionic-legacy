@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      League
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let league of leagues" (click)="viewLeague(league)">
+      <ion-icon name="people" item-left></ion-icon>
+      {{league.name}}
+    </button>
+  </ion-list>
+</ion-content>
