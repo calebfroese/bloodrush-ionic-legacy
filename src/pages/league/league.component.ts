@@ -20,6 +20,6 @@ export class LeagueComponent implements OnInit {
         })
   }
   viewLeague(league: any): void {
-    this.navCtrl.push(DetailComponent);
+    this.navCtrl.push(DetailComponent, {league: league});
   }
 }

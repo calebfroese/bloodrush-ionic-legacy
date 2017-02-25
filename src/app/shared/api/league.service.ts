@@ -5,6 +5,6 @@ import {ApiService} from './api.service';
 export class LeagueService {
   constructor(public api: ApiService) {}
   public getLeague(): Promise<any> {
-    return this.api.run('get', `/leagues`, '', {})
+    return this.api.run('get', `/leagues`, '&filter={"include": "seasons"}', {})
   }
 }

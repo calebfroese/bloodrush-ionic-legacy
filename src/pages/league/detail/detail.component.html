@@ -1,8 +1,19 @@
-<ion-header>
+<ion-header *ngIf="league">
     <ion-navbar>
-        <ion-title>Detail</ion-title>
+        <ion-title>{{league.name}}</ion-title>
     </ion-navbar>
 </ion-header>
-<ion-content padding>
-    This is league detail
+<ion-content *ngIf="league">
+    <h2>Seasons</h2>
+    <ion-list>
+        <button ion-item *ngFor="let season of league.seasons" (click)="viewSeason(season)">
+            Season {{season.number}}
+        </button>
+    </ion-list>
+    <h2>Teams</h2>
+    <ion-list>
+        <button ion-item *ngFor="let team of teams" (click)="viewTeam(team)">
+            {{team.name}}
+        </button>
+    </ion-list>
 </ion-content>
