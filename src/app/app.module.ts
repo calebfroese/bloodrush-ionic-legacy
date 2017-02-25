@@ -3,7 +3,7 @@ import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
 import {HomeComponent} from '../pages/home/home.component';
 import {LeagueModule} from '../pages/league/league.module';
-import {SeasonComponent} from '../pages/season/season.component';
+import {SeasonModule} from '../pages/season/season.module';
 import {TabsComponent} from '../pages/tabs/tabs.component';
 import {TeamComponent} from '../pages/team/team.component';
 
@@ -14,12 +14,10 @@ import {SeasonService} from './shared/api/season.service';
 import {TeamService} from './shared/api/team.service';
 
 @NgModule({
-  declarations:
-      [MyApp, SeasonComponent, HomeComponent, TabsComponent, TeamComponent],
-  imports: [IonicModule.forRoot(MyApp), LeagueModule],
+  declarations: [MyApp, HomeComponent, TabsComponent, TeamComponent],
+  imports: [IonicModule.forRoot(MyApp), LeagueModule, SeasonModule],
   bootstrap: [IonicApp],
-  entryComponents:
-      [MyApp, SeasonComponent, HomeComponent, TabsComponent, TeamComponent],
+  entryComponents: [MyApp, HomeComponent, TabsComponent, TeamComponent],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}, SeasonService,
     LeagueService, TeamService, ApiService

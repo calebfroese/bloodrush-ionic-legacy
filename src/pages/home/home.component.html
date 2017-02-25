@@ -1,6 +1,9 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>Home</ion-title>
+    <button ion-button menuToggle left>
+      <ion-icon name="menu"></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -9,3 +12,22 @@
     This is the homepage
   </p>
 </ion-content>
+
+<ion-menu [content]="sidemenu">
+  <ion-header>
+    <ion-toolbar color="secondary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-content>
+      <ion-list>
+        <button ion-item menuClose>
+        Close
+      </button>
+      </ion-list>
+    </ion-content>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #sidemenu [root]="rootPage"></ion-nav>

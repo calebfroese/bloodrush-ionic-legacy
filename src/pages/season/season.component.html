@@ -6,15 +6,15 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list *ngIf="season">
+  <ion-list *ngIf="season && games">
     <ion-list-header>Games</ion-list-header>
-    <button ion-item *ngFor="let game of season.games">
+    <button ion-item *ngFor="let game of games | gamePipe">
                 <ion-thumbnail item-left>
                     <img src="{{config[envName].imgUrl}}teamlogos/{{game.homeId || 'bye'}}.png" onError="this.src='/assets/img/logo.png';" class="team-icon">
                 </ion-thumbnail>
                 <h2>{{teams[game.homeId] ? teams[game.homeId].acronym : 'Bye'}} v {{teams[game.awayId] ? teams[game.awayId].acronym : 'Bye'}}</h2>
-                <p *ngIf="game.data && game.data.live">{{game.data.live.homeScore}} - {{game.data.live.awayScore}}</p>
-                <p>Round {{game.round}}, {{momentify(game.date)}}</p>
+                <p ion-text="primary" *ngIf="game.data && game.data.live">{{game.data.live.homeScore}} - {{game.data.live.awayScore}}</p>
+                <p>Round {{game.round}}<ng-container *ngIf="game.tag !== 'regular'"> {{game.tag | uppercase}}</ng-container>, {{momentify(game.date)}}</p>
                 <ion-thumbnail item-right>
                     <img src="{{config[envName].imgUrl}}teamlogos/{{game?.awayId || 'bye'}}.png" onError="this.src='/assets/img/logo.png';" class="team-icon">
                 </ion-thumbnail>
