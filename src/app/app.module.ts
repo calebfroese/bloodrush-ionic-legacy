@@ -10,6 +10,7 @@ import {TeamComponent} from '../pages/team/team.component';
 import {MyApp} from './app.component';
 import {ApiService} from './shared/api/api.service';
 import {LeagueService} from './shared/api/league.service';
+import {SeasonService} from './shared/api/season.service';
 import {TeamService} from './shared/api/team.service';
 
 @NgModule({
@@ -20,8 +21,8 @@ import {TeamService} from './shared/api/team.service';
   entryComponents:
       [MyApp, SeasonComponent, HomeComponent, TabsComponent, TeamComponent],
   providers: [
-    {provide: ErrorHandler, useClass: IonicErrorHandler}, LeagueService,
-    TeamService, ApiService
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, SeasonService,
+    LeagueService, TeamService, ApiService
   ]
 })
 export class AppModule {

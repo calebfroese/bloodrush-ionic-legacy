@@ -1,11 +1,23 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>
-      Season
+    <ion-title *ngIf="season">
+      Season {{season.number}}
     </ion-title>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  This is the season page
+<ion-content>
+  <ion-list *ngIf="season">
+    <ion-list-header>Games</ion-list-header>
+    <button ion-item *ngFor="let game of season.games">
+                <ion-thumbnail item-left>
+                    <img src="{{config[envName].imgUrl}}teamlogos/{{game.homeId || 'bye'}}.png" onError="this.src='/assets/img/logo.png';" class="team-icon">
+                </ion-thumbnail>
+                <h2>{{teams[game.homeId] ? teams[game.homeId].acronym : 'Bye'}} v {{teams[game.awayId] ? teams[game.awayId].acronym : 'Bye'}}</h2>
+                <p *ngIf="game.data && game.data.live">{{game.data.live.homeScore}} - {{game.data.live.awayScore}}</p>
+                <p>Round {{game.round}}, {{momentify(game.date)}}</p>
+                <ion-thumbnail item-right>
+                    <img src="{{config[envName].imgUrl}}teamlogos/{{game?.awayId || 'bye'}}.png" onError="this.src='/assets/img/logo.png';" class="team-icon">
+                </ion-thumbnail>
+            </button>
+  </ion-list>
 </ion-content>

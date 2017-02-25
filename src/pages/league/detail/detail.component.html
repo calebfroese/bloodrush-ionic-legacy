@@ -4,24 +4,20 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding *ngIf="league">
-    <ion-card>
-        <ion-list>
-            <ion-list-header>Seasons</ion-list-header>
-            <button ion-item *ngFor="let season of league.seasons" (click)="viewSeason(season)">
+    <ion-list>
+        <ion-list-header>Seasons</ion-list-header>
+        <button ion-item *ngFor="let season of league.seasons" (click)="viewSeason(season)">
             Season {{season.number}}
         </button>
-        </ion-list>
-    </ion-card>
-    <ion-card>
-        <ion-list>
-            <ion-list-header>Teams</ion-list-header>
-            <button ion-item *ngFor="let team of teams" (click)="viewTeam(team)">
-                <ion-avatar item-left>
+    </ion-list>
+    <ion-list>
+        <ion-list-header>Teams</ion-list-header>
+        <button ion-item *ngFor="let team of teams" (click)="viewTeam(team)">
+                <ion-thumbnail item-left>
                     <img src="{{config[envName].imgUrl}}teamlogos/{{team.id || 'bye'}}.png" onError="this.src='/assets/img/logo.png';" class="team-icon">
-                </ion-avatar>
+                </ion-thumbnail>
                 <h2>{{team.name}}</h2>
                 <p>{{team.acronym}}</p>
             </button>
-        </ion-list>
-    </ion-card>
+    </ion-list>
 </ion-content>
