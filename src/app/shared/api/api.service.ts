@@ -35,11 +35,11 @@ export class ApiService {
       };
       request(req, (error, response, body) => {
         if (error) {
-          return console.log('Error:', error);
+          console.error('Error:', error);
         }
         if (response.statusCode !== 200) {
-          return console.log(
-              'Invalid Status Code Returned:', response.statusCode);
+          console.error('Invalid Status Code Returned:', response.statusCode);
+          reject();
         }
         resolve(body);
       });
