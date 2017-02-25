@@ -8,8 +8,8 @@
 </ion-header>
 <ion-content padding>
   <h2>Welcome to Bloodrush!</h2>
-  <p>
-    This is the homepage
+  <p *ngIf="acc.team">
+    Welcome {{acc.team.name}}
   </p>
 </ion-content>
 
@@ -22,8 +22,11 @@
   <ion-content>
     <ion-content>
       <ion-list>
-        <button ion-item menuClose (click)="openLogin()">
+        <button *ngIf="!acc.team" ion-item menuClose (click)="openLogin()">
         Login
+      </button>
+        <button *ngIf="acc.team" ion-item menuClose (click)="logout()">
+        Logout
       </button>
         <button ion-item menuClose>
         Close

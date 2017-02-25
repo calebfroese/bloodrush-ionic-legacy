@@ -22,7 +22,10 @@ export class LoginComponent {
     let loader = this.loadCtrl.create({content: 'Logging in...'})
     loader.present();
     this.acc.login(username, password)
-        .then(details => {
+        .then(() => {
+          return this.acc.loadTeam();
+        })
+        .then(() => {
           // Success
           loader.dismiss();
           this.viewCtrl.dismiss();
