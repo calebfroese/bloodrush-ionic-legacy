@@ -3,6 +3,7 @@ import {NavOptions, PopoverController} from 'ionic-angular';
 import {NavController, NavParams} from 'ionic-angular';
 import * as moment from 'moment';
 
+import {AccountService} from '../../app/shared/account.service';
 import {SeasonService} from '../../app/shared/api/season.service';
 import {TeamService} from '../../app/shared/api/team.service';
 import {Config} from '../../app/shared/config';
@@ -21,10 +22,10 @@ export class SeasonComponent {
   constructor(
       public navCtrl: NavController, public seasonService: SeasonService,
       public teamService: TeamService, public params: NavParams,
-      public popCtrl: PopoverController) {
+      public popCtrl: PopoverController, public acc: AccountService) {
     let sId = this.params.get('seasonId') || this.params.get('season') ?
         this.params.get('season').id :
-        null;
+        this.acc.seasonId ? this.acc.seasonId : null;
     if (sId) {
       this.loadSeason(sId);
     }

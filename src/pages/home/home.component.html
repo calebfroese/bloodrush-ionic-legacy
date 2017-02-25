@@ -6,11 +6,9 @@
     </button>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
-  <h2>Welcome to Bloodrush!</h2>
-  <p *ngIf="acc.team">
-    Welcome {{acc.team.name}}
-  </p>
+<ion-content padding *ngIf="acc.team">
+  <h2>{{acc.team.name}}</h2>
+  
 </ion-content>
 
 <ion-menu [content]="sidemenu">

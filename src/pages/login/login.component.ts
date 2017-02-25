@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, NgZone} from '@angular/core';
 import {ViewController} from 'ionic-angular';
 import {AlertController} from 'ionic-angular/components/alert/alert';
 import {LoadingController} from 'ionic-angular/components/loading/loading';
@@ -12,7 +12,8 @@ export class LoginComponent {
 
   constructor(
       public viewCtrl: ViewController, public acc: AccountService,
-      public loadCtrl: LoadingController, public alertCtrl: AlertController) {}
+      public loadCtrl: LoadingController, public alertCtrl: AlertController,
+      public zone: NgZone) {}
 
   dismiss(): void {
     this.viewCtrl.dismiss();
@@ -29,6 +30,7 @@ export class LoginComponent {
           // Success
           loader.dismiss();
           this.viewCtrl.dismiss();
+          this.zone.run(() => {});
         })
         .catch(err => {
           loader.dismiss();
