@@ -6,9 +6,21 @@
     </button>
   </ion-navbar>
 </ion-header>
-<ion-content padding *ngIf="acc.team">
-  <h2>{{acc.team.name}}</h2>
-  
+<ion-content padding>
+  <ng-container *ngIf="acc.team && acc.players">
+    <ion-list>
+      <ion-list-header>{{acc.team.name}}</ion-list-header>
+      <ion-item width="100%">
+        <img src="{{config[envName].imgUrl}}teamlogos/{{acc.team.id}}.png">
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-list-header>Players</ion-list-header>
+      <button ion-item *ngFor="let player of acc.players">
+      {{player.first}} {{player.last}}
+    </button>
+    </ion-list>
+  </ng-container>
 </ion-content>
 
 <ion-menu [content]="sidemenu">
