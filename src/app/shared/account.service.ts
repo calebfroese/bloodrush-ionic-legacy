@@ -1,12 +1,12 @@
 import 'rxjs/add/operator/map';
 
 import {Injectable} from '@angular/core';
-import {Headers, Http, Response} from '@angular/http';
+import {Http} from '@angular/http';
 
-import {environment} from '../../environment/environment';
+// import {environment} from '../../environment/environment';
 
 import {ApiService} from './api/api.service';
-import {Config} from './config';
+// import {Config} from './config';
 
 @Injectable()
 export class AccountService {
